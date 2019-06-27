@@ -1,0 +1,22 @@
+pipeline {
+	agent any
+	environment {
+		project_path = "mongo-java-driver-example"
+	}
+	stages {
+        	stage('compile,test and package') {
+        		steps {
+				dir(project_path) {
+            				bat 'mvn clean package'
+				}
+            		}
+        	}
+        	stage('archival') {
+        		steps {
+				dir(project_path) {
+            	 			archiveArtifacts 'target/*.jar'
+            			}
+			}
+        	}
+			}
+			}
