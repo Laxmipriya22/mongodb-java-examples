@@ -12,13 +12,12 @@ pipeline {
             		}
         	}
 		stage("build & SonarQube analysis") {
-            agent any
-            steps {
+          node {
               withSonarQubeEnv('My SonarQube Server') {
-                sh 'mvn clean package sonar:sonar'
+                 bat 'mvn clean package sonar:sonar'
               }
-            }
           }
+      }
         	stage('archival') {
         		steps {
 				dir(project_path) {
