@@ -35,6 +35,10 @@ archiveArtifacts 'target/*.jar'
 }
 }
 }
-
+stage('Test Reports') {
+        	steps {
+                junit 'build/test-results/test/*.xml'
+			}
+        }
 }
 }
