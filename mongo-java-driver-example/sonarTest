@@ -37,7 +37,9 @@ archiveArtifacts 'target/*.jar'
 }
 stage('Test Reports') {
         	steps {
+		dir(project_path) {
                 junit 'build/test-results/test/*.xml'
+			}
 			}
         }
 }
